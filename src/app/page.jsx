@@ -1,3 +1,6 @@
+import CategoriesSection from "./components/categoriesSection";
+import Header from "./components/header";
+import HeroSection from "./components/heroSection";
 import styles from "./memes.module.css";
 
 export default function Home() {
@@ -167,78 +170,25 @@ export default function Home() {
   return (
     <div className={styles.container}>
       {/* COMPONENTE: Header */}
-      <header className={styles.header}>
-        <div className={styles.logo}>
-          <h1>MemeVerse</h1>
-          <span>🌟</span>
-        </div>
-        <nav className={styles.nav}>
-          <a href="#" className={styles.active}>
-            Home
-          </a>
-          <a href="#">Trending</a>
-          <a href="#">Create</a>
-          <a href="#">Categories</a>
-          <a href="#">Profile</a>
-        </nav>
-
-        <div className={styles.userActions}>
-          <button className={styles.notificationBtn}>🔔</button>
-          <button className={styles.userAvatar}>
-            <img src="https://i.pravatar.cc/150?img=3" alt="Your profile" />
-          </button>
-        </div>
-      </header>
+      <Header titleHeader={"MemeVerse"} 
+      navTitle1={"Home"} 
+      navTitle2={"Trending"} 
+      navTitle3={"Create"} 
+      navTitle4={"Categories"} 
+      navTitle5={"Profile"} 
+      logoNav={"https://s2-quem.glbimg.com/tvUHHm8eMCoG-hQehOjKYNOWaG8=/0x0:1440x1800/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_b0f0e84207c948ab8b8777be5a6a4395/internal_photos/bs/2024/W/G/pICzkFSwKFoP79VjmOTQ/412679070-6822846731171675-3934178438590970622-n.jpg"} 
+      altNav={"logo"}/>
       {/* FIM COMPONENTE: Header */}
 
       <div className={styles.mainContent}>
         <div className={styles.contentArea}>
           {/* COMPONENTE: HeroSection */}
-          <section className={styles.heroSection}>
-            <div className={styles.heroContent}>
-              <span className={styles.heroTag}>Meme do Dia</span>
-              <h2 className={styles.heroTitle}>{memeOfTheDay.title}</h2>
-              <p className={styles.heroDescription}>
-                {memeOfTheDay.description}
-              </p>
-              <div className={styles.heroAuthor}>
-                <img
-                  src={memeOfTheDay.authorAvatar}
-                  alt={memeOfTheDay.author}
-                />
-                <span>Por {memeOfTheDay.author}</span>
-              </div>
-              <div className={styles.heroStats}>
-                <span>❤️ {memeOfTheDay.likes}</span>
-                <span>💬 {memeOfTheDay.comments}</span>
-              </div>
-              <button className={styles.heroButton}>Ver meme completo</button>
-            </div>
-            <div className={styles.heroImageContainer}>
-              <img
-                src={memeOfTheDay.image}
-                alt={memeOfTheDay.title}
-                className={styles.heroImage}
-              />
-            </div>
-          </section>
+          <HeroSection memeOfTheDay={memeOfTheDay} />
           {/* FIM COMPONENTE: HeroSection */}
 
           {/* COMPONENTE: CategoriesSection */}
-          <section className={styles.categoriesSection}>
-            <h2 className={styles.sectionTitle}>Explore por Categorias</h2>
-            <div className={styles.categoriesGrid}>
-              {categories.map((category) => (
-                <div key={category.id} className={styles.categoryCard}>
-                  <span className={styles.categoryIcon}>{category.icon}</span>
-                  <h3 className={styles.categoryName}>{category.name}</h3>
-                  <span className={styles.categoryCount}>
-                    {category.count} memes
-                  </span>
-                </div>
-              ))}
-            </div>
-          </section>
+            <CategoriesSection categories={categories} 
+            titleCategories={"Explore por categorias"} />
           {/* FIM COMPONENTE: CategoriesSection */}
 
           {/* COMPONENTE: Feed */}
