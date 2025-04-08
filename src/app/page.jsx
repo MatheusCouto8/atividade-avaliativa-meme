@@ -3,6 +3,7 @@ import Footer from "./components/footer";
 import Header from "./components/header";
 import HeroSection from "./components/heroSection";
 import InteractionBar from "./components/interactionBar";
+import MemeCards from "./components/memecards";
 import Sidebar from "./components/sidebar";
 import styles from "./memes.module.css";
 
@@ -211,29 +212,7 @@ export default function Home() {
               {/* Aqui mapeamos os memes do array para criar múltiplos cards */}
               {memes.map((meme) => (
                 // COMPONENTE: MemeCard
-                <div key={meme.id} className={styles.memeCard}>
-                  <div className={styles.memeCardHeader}>
-                    <div className={styles.memeAuthor}>
-                      <img src={meme.authorAvatar} alt={meme.author} />
-                      <span>{meme.author}</span>
-                    </div>
-                    <span className={styles.memeCategory}>{meme.category}</span>
-                  </div>
-                  <img
-                    src={meme.image}
-                    alt={meme.title}
-                    className={styles.memeImage}
-                  />
-                  <div className={styles.memeContent}>
-                    <h3 className={styles.memeTitle}>{meme.title}</h3>
-                    <p className={styles.memeDescription}>{meme.description}</p>
-
-                    {/* COMPONENTE: InteractionBar */}
-                    <InteractionBar meme={meme} /> 
-                    <memeCard meme={meme} />
-                    {/* FIM COMPONENTE: InteractionBar */}
-                  </div>
-                </div>
+                <MemeCards meme={meme} key={meme.id} />
                 // FIM COMPONENTE: MemeCard
               ))}
             </div>
